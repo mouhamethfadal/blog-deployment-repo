@@ -1,0 +1,3 @@
+api.mouhamethfadalaidara.me {
+    reverse_proxy blog-backend:8080
+}

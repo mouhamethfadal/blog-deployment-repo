@@ -17,7 +17,7 @@ jobs:
           username: ${{secrets.VP_USER}}
           key: ${{secrets.SSH_KEY}}
           source: "deploy/*"
-          target: "/opt/blog-platform"
+          target: "~/blog-platform"
 
       - name: Deploy with Docker Compose
         uses: appleboy/ssh-action@v1.2.2
@@ -26,6 +26,6 @@ jobs:
           username: ${{secrets.VP_USER}}
           key: ${{secrets.SSH_KEY}}
           script: |
-            cd /opt/blog-platform
-            docker compose -f docker-compose.prod.yml --env-file .env.prod pull
-            docker compose -f docker-compose.prod.yml --env-file .env.prod up -d
+            cd ~/blog-platform/deploy
+            docker compose -f docker-compose.prod.yml --env-file ../environment/.env.prod pull
+            docker compose -f docker-compose.prod.yml --env-file ../environment/.env.prod up -d
